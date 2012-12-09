@@ -4,6 +4,11 @@ def factors(n)
   return [factor] + factors(n / factor)
 end
 
+def factors_count(n)
+  f = factors(n).group_by {|i| i}
+  f.inject({}) {|h, (k,v)| h[k] = v.size; h}
+end
+
 def primes_up_to(max)
   min = 2
   sieve = {}
